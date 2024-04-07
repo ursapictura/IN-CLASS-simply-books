@@ -16,6 +16,7 @@ function Home() {
   // TODO: create a function that makes the API call to get all the books
   const getAllTheBooks = () => {
     getBooks(user.uid).then(setBooks);
+    console.warn(user.uid);
   };
 
   // TODO: make the call to the API to get all the books on component render
