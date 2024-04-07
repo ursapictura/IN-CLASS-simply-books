@@ -27,6 +27,9 @@ export default function NavBar() {
             <Link passHref href="/authors">
               <Nav.Link>Authors</Nav.Link>
             </Link>
+            <Link passHref href="/profile">
+              <Nav.Link>User Profile</Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
