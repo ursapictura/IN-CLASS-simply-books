@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { viewAuthorDetails } from '../../api/mergedData';
-// import BookCard from '../../components/BookCard';
+import BookCard from '../../components/BookCard';
 
 export default function ViewAuthor() {
   const [authorDetails, setAuthorDetails] = useState({});
@@ -11,10 +11,14 @@ export default function ViewAuthor() {
   // grab firebaseKey from url
   const { firebaseKey } = router.query;
 
+  const getAuthorDetails = () => {
+    viewAuthorDetails(firebaseKey).then(setAuthorDetails);
+  };
+
   // make call to API layer to get the data
   useEffect(() => {
-    viewAuthorDetails(firebaseKey).then(setAuthorDetails);
-  }, [firebaseKey]);
+    getAuthorDetails();
+  }, []);
 
   return (
     <>
@@ -31,9 +35,9 @@ export default function ViewAuthor() {
 
       <div>
         {console.warn(authorDetails)}
-        {/* {authorDetails.books.map((book) => (
-          <BookCard key={book.firebaseKey} bookObj={book} onUpdate={useEffect} />
-        ))} */}
+        { authorDetails.books?.map((book) => (
+          <BookCard key={book.firebaseKey} bookObj={book} onUpdate={getAuthorDetails} />
+        ))}
       </div>
     </>
   );
