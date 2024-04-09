@@ -11,10 +11,14 @@ export default function ViewAuthor() {
   // grab firebaseKey from url
   const { firebaseKey } = router.query;
 
+  const getAuthorDetails = () => {
+    viewAuthorDetails(firebaseKey).then(setAuthorDetails);
+  };
+
   // make call to API layer to get the data
   useEffect(() => {
-    viewAuthorDetails(firebaseKey).then(setAuthorDetails);
-  }, [firebaseKey]);
+    getAuthorDetails();
+  }, []);
 
   return (
     <>
@@ -30,12 +34,11 @@ export default function ViewAuthor() {
       </div>
 
       <div>
-        {authorDetails.books.map((book) => (
-          <BookCard key={book.firebaseKey} bookObj={book} />
+        {console.warn(authorDetails)}
+        { authorDetails.books?.map((book) => (
+          <BookCard key={book.firebaseKey} bookObj={book} onUpdate={getAuthorDetails} />
         ))}
       </div>
     </>
-    // TODO: add loop for books on Author
-
   );
 }
