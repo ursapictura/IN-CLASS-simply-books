@@ -30,10 +30,11 @@ export default function ViewAuthor() {
           </h5>
           Author Email: <a href={`mailto:${authorDetails.email}`}>{authorDetails.email}</a>
           <hr />
+          <p>{authorDetails.description}</p>
         </div>
       </div>
 
-      <div>
+      <div className="d-flex flex-wrap">
         {console.warn(authorDetails)}
         { authorDetails.books?.map((book) => (
           <BookCard key={book.firebaseKey} bookObj={book} onUpdate={getAuthorDetails} />

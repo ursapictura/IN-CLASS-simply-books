@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getSingleBook } from '../../../api/bookData';
-import BookForm from '../../../components/forms/BookForm';
+import { getSingleAuthor } from '../../../api/authorData';
+import AuthorForm from '../../../components/forms/AuthorForm';
 
 // TODO: CHANGE FROM BOOKS TO AUTHORS
 
-export default function EditBook() {
+export default function EditAuthor() {
   const [editItem, setEditItem] = useState({});
   const router = useRouter();
   // TODO: grab the firebasekey
@@ -13,9 +13,9 @@ export default function EditBook() {
 
   // TODO: make a call to the API to get the book data
   useEffect(() => {
-    getSingleBook(firebaseKey).then(setEditItem);
+    getSingleAuthor(firebaseKey).then(setEditItem);
   }, [firebaseKey]);
 
   // TODO: pass object to form
-  return (<BookForm obj={editItem} />);
+  return (<AuthorForm obj={editItem} />);
 }
