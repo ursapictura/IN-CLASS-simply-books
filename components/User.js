@@ -13,7 +13,7 @@ export default function User() {
   return (
     <>
       <Card style={{ width: '18rem', margin: '10px' }}>
-        <Card.Img variant="top" src={user.photoURL} alt={user.displayName} />
+        <Card.Img variant="top" src={user.photoURL} alt={user.displayName} style={{ width: '10rem', margin: '10px auto', borderRadius: '50%' }} />
         <Card.Body>
           <Card.Title>{user.displayName}</Card.Title>
           <p className="card-text bold">{user.email}</p>
